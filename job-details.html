@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior JS Developer - Job Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+        }
+        
+        .job-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .requirement-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .tech-badge {
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .progress-tracker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .section-nav {
+            position: sticky;
+            top: 20px;
+        }
+
+        .section-nav .nav-link {
+            color: #666;
+            padding: 0.5rem 1rem;
+            border-left: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .section-nav .nav-link:hover,
+        .section-nav .nav-link.active {
+            color: var(--primary-color);
+            border-left: 2px solid var(--primary-color);
+            background-color: #f8f9fa;
+        }
+
+        .apply-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Tracker -->
+    <div class="progress-tracker">
+        <div class="progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- Job Header -->
+    <header class="job-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="jobs.html" class="text-white">Jobs</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Senior JS Developer</li>
+                </ol>
+            </nav>
+            <h1 class="display-4 mb-3">Senior JS Developer</h1>
+            <div class="d-flex gap-4 mb-3">
+                <span><i class="bi bi-geo-alt"></i> Remote</span>
+                <span><i class="bi bi-clock"></i> Full-time</span>
+                <span><i class="bi bi-currency-dollar"></i> $120k - $150k</span>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-light"><i class="bi bi-bookmark"></i> Save</button>
+                <button class="btn btn-light"><i class="bi bi-share"></i> Share</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Overview Section -->
+                <section id="overview" class="mb-5 animate-fade-in-up">
+                    <h2 class="h3 mb-4">Overview</h2>
+                    <p class="lead">We're looking for a Senior JavaScript Developer to join our dynamic team and help build the next generation of our SaaS platform.</p>
+                    <p>Join our fast-growing startup and work on cutting-edge technologies while solving complex problems in a collaborative environment.</p>
+                </section>
+
+                <!-- Key Requirements -->
+                <section id="requirements" class="mb-5 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h2 class="h3 mb-4">Key Requirements</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card requirement-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-code-square text-primary"></i> Technical Skills</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check2 text-success"></i> 5+ years of JavaScript experience</li>
+                                        <li class="mb-2"><i class="bi bi-check2 text-success"></i> Strong knowledge of React.js</li>
+                                        <li class="mb-2"><i class="bi bi-check2 text-success"></i> Experience with Node.js</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card requirement-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-person-workspace text-primary"></i> Professional Skills</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check2 text-success"></i> Team leadership experience</li>
+                                        <li class="mb-2"><i class="bi bi-check2 text-success"></i> Strong communication skills</li>
+                                        <li class="mb-2"><i class="bi bi-check2 text-success"></i> Problem-solving abilities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technologies -->
+                <section id="technologies" class="mb-5 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <h2 class="h3 mb-4">Technologies We Use</h2>
+                    <div class="tech-stack">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">React.js</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">GraphQL</span>
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">MongoDB</span>
+                    </div>
+                </section>
+
+                <!-- Responsibilities -->
+                <section id="responsibilities" class="mb-5 animate-fade-in-up" style="animation-delay: 0.6s;">
+                    <h2 class="h3 mb-4">Responsibilities</h2>
+                    <div class="card requirement-card">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <i class="bi bi-arrow-right text-primary"></i>
+                                    Lead development of new features and improvements
+                                </li>
+                                <li class="mb-3">
+                                    <i class="bi bi-arrow-right text-primary"></i>
+                                    Mentor junior developers and conduct code reviews
+                                </li>
+                                <li class="mb-3">
+                                    <i class="bi bi-arrow-right text-primary"></i>
+                                    Collaborate with product and design teams
+                                </li>
+                                <li class="mb-3">
+                                    <i class="bi bi-arrow-right text-primary"></i>
+                                    Optimize application performance
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Benefits -->
+                <section id="benefits" class="mb-5 animate-fade-in-up" style="animation-delay: 0.8s;">
+                    <h2 class="h3 mb-4">Benefits</h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card requirement-card h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-laptop fs-1 text-primary mb-3"></i>
+                                    <h5>Remote Work</h5>
+                                    <p class="mb-0">Work from anywhere</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card requirement-card h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-heart-pulse fs-1 text-primary mb-3"></i>
+                                    <h5>Health Insurance</h5>
+                                    <p class="mb-0">Full coverage</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card requirement-card h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-book fs-1 text-primary mb-3"></i>
+                                    <h5>Learning Budget</h5>
+                                    <p class="mb-0">$2000/year</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="section-nav">
+                    <nav class="nav flex-column" id="section-nav">
+                        <a class="nav-link" href="#overview">Overview</a>
+                        <a class="nav-link" href="#requirements">Requirements</a>
+                        <a class="nav-link" href="#technologies">Technologies</a>
+                        <a class="nav-link" href="#responsibilities">Responsibilities</a>
+                        <a class="nav-link" href="#benefits">Benefits</a>
+                    </nav>
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Quick Apply</h5>
+                            <p class="card-text">Submit your application in less than 5 minutes!</p>
+                            <a href="job-application.html" class="btn btn-primary w-100">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apply Button (Mobile) -->
+    <div class="d-lg-none">
+        <button class="btn btn-primary btn-lg rounded-circle apply-button" data-bs-toggle="modal" data-bs-target="#applyModal">
+            <i class="bi bi-send"></i>
+        </button>
+    </div>
+
+    <!-- Apply Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Quick Apply</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>For a better application experience, please use our full application form.</p>
+                    <a href="job-application.html" class="btn btn-primary w-100">Go to Application Form</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // Section Navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('#section-nav .nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form Submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Application submitted successfully!');
+                if (e.target.id === 'mobileApplyForm') {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('applyModal'));
+                    modal.hide();
+                }
+                e.target.reset();
+            });
+        });
+
+        // Technology Badge Click
+        document.querySelectorAll('.tech-badge').forEach(badge => {
+            badge.addEventListener('click', () => {
+                badge.classList.toggle('highlight');
+            });
+        });
+    </script>
+</body>
+</html> 
