@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply - Senior JS Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .application-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .step-progress::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e9ecef;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .step.completed {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tech-badge {
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .custom-file-upload {
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            border-color: var(--primary-color);
+            background-color: #f8f9fa;
+        }
+
+        .experience-card {
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Application Header -->
+    <header class="application-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="jobs.html" class="text-white">Jobs</a></li>
+                    <li class="breadcrumb-item"><a href="job-details.html" class="text-white">Senior JS Developer</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Apply</li>
+                </ol>
+            </nav>
+            <h1 class="h2">Apply for Senior JS Developer Position</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <!-- Progress Steps -->
+            <div class="step-progress mb-5">
+                <div class="step active" data-step="1">1</div>
+                <div class="step" data-step="2">2</div>
+                <div class="step" data-step="3">3</div>
+                <div class="step" data-step="4">4</div>
+            </div>
+
+            <!-- Application Form -->
+            <form id="applicationForm">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" data-step="1">
+                    <h3 class="mb-4">Personal Information</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Current Location</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Professional Experience -->
+                <div class="form-step" data-step="2">
+                    <h3 class="mb-4">Professional Experience</h3>
+                    <div id="experienceContainer">
+                        <div class="experience-card">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Position</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">End Date</label>
+                                    <input type="date" class="form-control">
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" type="checkbox" id="currentlyWorking">
+                                        <label class="form-check-label" for="currentlyWorking">
+                                            I currently work here
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Key Responsibilities</label>
+                                    <textarea class="form-control" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary mt-3" onclick="addExperience()">
+                        <i class="bi bi-plus-circle"></i> Add Another Experience
+                    </button>
+                </div>
+
+                <!-- Step 3: Technical Skills -->
+                <div class="form-step" data-step="3">
+                    <h3 class="mb-4">Technical Skills</h3>
+                    <div class="mb-4">
+                        <label class="form-label">Select Your Technical Skills</label>
+                        <div class="tech-stack">
+                            <span class="tech-badge" onclick="toggleSkill(this)">JavaScript</span>
+                            <span class="tech-badge" onclick="toggleSkill(this)">React.js</span>
+                            <span class="tech-badge" onclick="toggleSkill(this)">Node.js</span>
+                            <span class="tech-badge" onclick="toggleSkill(this)">TypeScript</span>
+                            <span class="tech-badge" onclick="toggleSkill(this)">GraphQL</span>
+                            <span class="tech-badge" onclick="toggleSkill(this)">AWS</span>
+                            <span class="tech-badge" onclick="toggleSkill(this)">Docker</span>
+                            <span class="tech-badge" onclick="toggleSkill(this)">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Years of JavaScript Experience</label>
+                        <select class="form-select" required>
+                            <option value="">Select experience</option>
+                            <option value="1-2">1-2 years</option>
+                            <option value="3-4">3-4 years</option>
+                            <option value="5+">5+ years</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">GitHub Profile (optional)</label>
+                        <input type="url" class="form-control" placeholder="https://github.com/username">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Portfolio Website (optional)</label>
+                        <input type="url" class="form-control" placeholder="https://yourportfolio.com">
+                    </div>
+                </div>
+
+                <!-- Step 4: Additional Information -->
+                <div class="form-step" data-step="4">
+                    <h3 class="mb-4">Additional Information</h3>
+                    <div class="mb-4">
+                        <label class="form-label">Upload Resume/CV</label>
+                        <div class="custom-file-upload" onclick="document.getElementById('resumeUpload').click()">
+                            <i class="bi bi-cloud-upload fs-1 text-primary"></i>
+                            <p class="mb-0 mt-2">Drag and drop your resume here or click to browse</p>
+                            <small class="text-muted">Supported formats: PDF, DOC, DOCX (Max 5MB)</small>
+                        </div>
+                        <input type="file" id="resumeUpload" class="d-none" accept=".pdf,.doc,.docx">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Why are you interested in this position?</label>
+                        <textarea class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Earliest Start Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Salary Expectations (USD/year)</label>
+                        <input type="number" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" class="btn btn-outline-secondary" onclick="prevStep()" id="prevBtn" style="display: none;">
+                        <i class="bi bi-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()" id="nextBtn">
+                        Next <i class="bi bi-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                        Submit Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="validation.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function updateSteps() {
+            document.querySelectorAll('.step').forEach(step => {
+                const stepNum = parseInt(step.dataset.step);
+                step.classList.remove('active', 'completed');
+                if (stepNum === currentStep) {
+                    step.classList.add('active');
+                } else if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+                if (parseInt(step.dataset.step) === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+
+            // Update buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            prevBtn.style.display = currentStep === 1 ? 'none' : 'block';
+            nextBtn.style.display = currentStep === totalSteps ? 'none' : 'block';
+            submitBtn.style.display = currentStep === totalSteps ? 'block' : 'none';
+        }
+
+        function nextStep() {
+            // Validate current step before proceeding
+            const currentStepElement = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const inputs = currentStepElement.querySelectorAll('input, select, textarea');
+            let isStepValid = true;
+
+            inputs.forEach(input => {
+                if (!window.formValidator.validateField(input)) {
+                    isStepValid = false;
+                }
+            });
+
+            if (isStepValid && currentStep < totalSteps) {
+                currentStep++;
+                updateSteps();
+                window.scrollTo(0, 0);
+            } else if (!isStepValid) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please fill in all required fields correctly.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateSteps();
+            }
+        }
+
+        function toggleSkill(element) {
+            element.classList.toggle('selected');
+        }
+
+        function addExperience() {
+            const container = document.getElementById('experienceContainer');
+            const newExperience = container.children[0].cloneNode(true);
+            
+            // Clear input values
+            newExperience.querySelectorAll('input, textarea').forEach(input => {
+                input.value = '';
+            });
+
+            container.appendChild(newExperience);
+        }
+
+        // Form submission
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your server
+            alert('Application submitted successfully!');
+            window.location.href = 'job-details.html';
+        });
+
+        // File upload handling
+        document.getElementById('resumeUpload').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name;
+            if (fileName) {
+                const uploadText = document.querySelector('.custom-file-upload p');
+                uploadText.textContent = `Selected file: ${fileName}`;
+            }
+        });
+
+        // Initialize drag and drop
+        const dropZone = document.querySelector('.custom-file-upload');
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--primary-color)';
+            dropZone.style.backgroundColor = '#f8f9fa';
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#dee2e6';
+            dropZone.style.backgroundColor = 'white';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#dee2e6';
+            dropZone.style.backgroundColor = 'white';
+            
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                const uploadText = document.querySelector('.custom-file-upload p');
+                uploadText.textContent = `Selected file: ${file.name}`;
+                document.getElementById('resumeUpload').files = e.dataTransfer.files;
+            }
+        });
+
+        // Initialize form validator
+        document.addEventListener('DOMContentLoaded', () => {
+            window.formValidator = new FormValidator(document.getElementById('applicationForm'));
+        });
+    </script>
+</body>
+</html> 
